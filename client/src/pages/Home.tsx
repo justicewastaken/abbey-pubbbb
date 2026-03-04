@@ -243,9 +243,9 @@ export default function Home() {
 
             {/* Headline */}
             <h1
-              className="abbey-section-title mb-6"
+              className="abbey-section-title mb-4 sm:mb-6"
               style={{
-                fontSize: "clamp(2.5rem, 6vw, 4.5rem)",
+                fontSize: "clamp(1.8rem, 5vw, 4rem)",
                 opacity: heroInView ? 1 : 0,
                 transform: heroInView ? "translateY(0)" : "translateY(30px)",
                 transition: "opacity 0.7s ease 0.2s, transform 0.7s ease 0.2s",
@@ -258,10 +258,10 @@ export default function Home() {
             <p
               style={{
                 fontFamily: "'Source Serif 4', Georgia, serif",
-                fontSize: "1.1rem",
+                fontSize: "clamp(0.9rem, 2.5vw, 1.1rem)",
                 color: "#c8b89a",
-                lineHeight: "1.7",
-                marginBottom: "2rem",
+                lineHeight: "1.6",
+                marginBottom: "1.5rem",
                 opacity: heroInView ? 1 : 0,
                 transform: heroInView ? "translateY(0)" : "translateY(20px)",
                 transition: "opacity 0.7s ease 0.35s, transform 0.7s ease 0.35s",
@@ -274,7 +274,7 @@ export default function Home() {
 
             {/* CTAs */}
             <div
-              className="flex flex-wrap gap-3"
+              className="flex flex-col sm:flex-row gap-2 sm:gap-3"
               style={{
                 opacity: heroInView ? 1 : 0,
                 transform: heroInView ? "translateY(0)" : "translateY(20px)",
