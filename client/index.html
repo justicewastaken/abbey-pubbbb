@@ -1,19 +1,66 @@
 <!doctype html>
 <html lang="en">
-
   <head>
     <meta charset="UTF-8" />
-    <meta
-      name="viewport"
-      content="width=device-width, initial-scale=1.0, maximum-scale=1" />
-    <title>The Abbey Pub & Grub</title>    
-    <!-- THIS IS THE START OF A COMMENT BLOCK, BLOCK TO BE DELETED: Google Fonts here, example:
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1" />
+    <title>The Abbey Pub &amp; Grub | Menomonie, WI</title>
+    <meta name="description" content="Your neighborhood pub in the heart of Menomonie. Beer on tap, bottled brews, cocktails, late-night bites. Live music, bingo, and events every week." />
+    <meta name="keywords" content="Abbey Pub Grub, Menomonie WI bar, Menomonie pub, downtown Menomonie bar, live music Menomonie, bingo Menomonie" />
+
+    <!-- Open Graph -->
+    <meta property="og:type" content="restaurant" />
+    <meta property="og:title" content="The Abbey Pub &amp; Grub | Menomonie, WI" />
+    <meta property="og:description" content="Your neighborhood pub in the heart of Menomonie. Beer on tap, bottled brews, cocktails, late-night bites." />
+    <meta property="og:url" content="https://theabbeypubandgrub.com" />
+    <meta property="og:image" content="https://d2xsxph8kpxj0f.cloudfront.net/310519663404247268/EU4KcD7bUaaniPuDkVKwNJ/abbey_hero-PtrPG8QorqzkKNvFcYZSbE.webp" />
+
+    <!-- Twitter Card -->
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="The Abbey Pub &amp; Grub | Menomonie, WI" />
+    <meta name="twitter:description" content="Your neighborhood pub in the heart of Menomonie." />
+    <meta name="twitter:image" content="https://d2xsxph8kpxj0f.cloudfront.net/310519663404247268/EU4KcD7bUaaniPuDkVKwNJ/abbey_hero-PtrPG8QorqzkKNvFcYZSbE.webp" />
+
+    <!-- LocalBusiness Schema -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "BarOrPub",
+      "name": "The Abbey Pub & Grub",
+      "description": "Newly renovated old-fashioned, pub-like atmosphere with 16 beers on tap, 48 bottled brews and a wide variety of spirits.",
+      "address": {
+        "@type": "PostalAddress",
+        "streetAddress": "414 Main St E",
+        "addressLocality": "Menomonie",
+        "addressRegion": "WI",
+        "postalCode": "54751",
+        "addressCountry": "US"
+      },
+      "telephone": "+17153092208",
+      "url": "https://theabbeypubandgrub.com",
+      "sameAs": ["https://www.facebook.com/theabbeypubandgrub"],
+      "openingHoursSpecification": [
+        {
+          "@type": "OpeningHoursSpecification",
+          "dayOfWeek": ["Monday","Tuesday","Wednesday","Thursday","Friday","Saturday","Sunday"],
+          "opens": "12:00",
+          "closes": "02:00"
+        }
+      ],
+      "geo": {
+        "@type": "GeoCoordinates",
+        "latitude": 44.8754,
+        "longitude": -91.9190
+      },
+      "servesCuisine": ["American", "Bar Food"],
+      "priceRange": "$$"
+    }
+    </script>
+
+    <!-- Google Fonts: Playfair Display + Oswald + Source Serif 4 -->
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" />
-    THIS IS THE END OF A COMMENT BLOCK, BLOCK TO BE DELETED -->
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,700;0,800;1,700&family=Oswald:wght@400;500;600;700&family=Source+Serif+4:ital,wght@0,300;0,400;0,600;1,400&display=swap" rel="stylesheet" />
   </head>
-
   <body>
     <div id="root"></div>
     <script type="module" src="/src/main.tsx"></script>
@@ -22,5 +69,4 @@
       src="%VITE_ANALYTICS_ENDPOINT%/umami"
       data-website-id="%VITE_ANALYTICS_WEBSITE_ID%"></script>
   </body>
-
 </html>
