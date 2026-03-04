@@ -204,16 +204,17 @@ export default function Home() {
         <div
           className="absolute inset-0"
           style={{
-            backgroundImage: `url(https://d2xsxph8kpxj0f.cloudfront.net/310519663404247268/EU4KcD7bUaaniPuDkVKwNJ/abbey_hero_d8d381db.jpg)`,
+            backgroundImage: `url(https://d2xsxph8kpxj0f.cloudfront.net/310519663404247268/EU4KcD7bUaaniPuDkVKwNJ/abbey_bar_real_30f46fa1.jpg)`,
             backgroundSize: "cover",
-            backgroundPosition: "center 30%",
+            backgroundPosition: "center",
           }}
         />
-        {/* Dark overlay */}
+        {/* Warm amber tint + dark overlay */}
         <div
           className="absolute inset-0"
           style={{
-            background: "linear-gradient(105deg, rgba(26,20,16,0.92) 0%, rgba(26,20,16,0.75) 50%, rgba(26,20,16,0.5) 100%)",
+            background: "linear-gradient(105deg, rgba(26,20,16,0.88) 0%, rgba(26,20,16,0.72) 50%, rgba(26,20,16,0.45) 100%), rgba(212,130,10,0.15)",
+            backdropFilter: "none",
           }}
         />
         {/* Grain overlay */}
