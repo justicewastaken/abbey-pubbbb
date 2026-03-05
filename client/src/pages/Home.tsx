@@ -268,18 +268,18 @@ export default function Home() {
 
             {/* CTAs */}
             <div
-              className="flex flex-col sm:flex-row gap-2 sm:gap-3"
+              className="flex flex-col sm:flex-row gap-3 sm:gap-3 pb-32 sm:pb-0"
               style={{
                 opacity: heroInView ? 1 : 0,
                 transform: heroInView ? "translateY(0)" : "translateY(20px)",
                 transition: "opacity 0.7s ease 0.5s, transform 0.7s ease 0.5s",
               }}
             >
-              <Link href="/events" className="abbey-btn-primary">
+              <Link href="/events" className="abbey-btn-primary w-full sm:w-auto">
                 <Calendar size={16} />
                 View Events
               </Link>
-              <Link href="/menu" className="abbey-btn-outline">
+              <Link href="/menu" className="abbey-btn-outline w-full sm:w-auto">
                 <Utensils size={16} />
                 See Menu
               </Link>
@@ -287,12 +287,12 @@ export default function Home() {
                 href="https://maps.google.com/?q=414+Main+St+E,+Menomonie,+WI+54751"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="abbey-btn-outline"
+                className="abbey-btn-outline w-full sm:w-auto"
               >
                 <MapPin size={16} />
                 Directions
               </a>
-              <a href="tel:+17153092208" className="abbey-btn-outline">
+              <a href="tel:+17153092208" className="abbey-btn-outline w-full sm:w-auto">
                 <Phone size={16} />
                 Call Now
               </a>
