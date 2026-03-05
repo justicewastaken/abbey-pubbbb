@@ -221,7 +221,7 @@ export default function Home() {
           }}
         />
 
-        <div className="container relative z-10">
+        <div className="container relative z-10" style={{paddingBottom: '50px'}}>
           <div className="max-w-2xl" ref={heroRef}>
             {/* Label */}
             <div
