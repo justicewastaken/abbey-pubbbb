@@ -77,8 +77,8 @@ export default function About() {
           </div>
           <div className="relative">
             <img
-              src="https://d2xsxph8kpxj0f.cloudfront.net/310519663404247268/EU4KcD7bUaaniPuDkVKwNJ/abbey_exterior_23993b45.jpeg"
-              alt="The Abbey Pub exterior"
+              src="https://d2xsxph8kpxj0f.cloudfront.net/310519663404247268/EU4KcD7bUaaniPuDkVKwNJ/abbey_owners_01b91e68.jpg"
+              alt="The Abbey Pub owners"
               className="w-full object-cover"
               style={{ height: "400px", border: "1px solid #3a3028" }}
             />
