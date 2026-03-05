@@ -33,15 +33,15 @@ export default function Layout({ children }: { children: React.ReactNode }) {
   }, [location]);
 
   return (
-    <div className="min-h-screen flex flex-col" style={{ backgroundColor: "#1a1410", color: "#f0e8d0" }}>
+    <div className="min-h-screen flex flex-col" style={{ backgroundColor: "#f5f1ed", color: "#2a2420" }}>
       {/* ── Sticky Header ── */}
       <header
         className="fixed top-0 left-0 right-0 z-50 transition-all duration-300"
         style={{
-          backgroundColor: scrolled ? "rgba(26,20,16,0.97)" : "rgba(26,20,16,0.85)",
+          backgroundColor: scrolled ? "rgba(255,255,255,0.97)" : "rgba(255,255,255,0.85)",
           backdropFilter: "blur(8px)",
-          borderBottom: scrolled ? "1px solid rgba(212,130,10,0.25)" : "1px solid transparent",
-          boxShadow: scrolled ? "0 4px 24px rgba(0,0,0,0.4)" : "none",
+          borderBottom: scrolled ? "1px solid rgba(212,130,10,0.15)" : "1px solid transparent",
+          boxShadow: scrolled ? "0 4px 24px rgba(0,0,0,0.08)" : "none",
         }}
       >
         <div className="container">
@@ -172,8 +172,8 @@ export default function Layout({ children }: { children: React.ReactNode }) {
       <footer
         className="mt-auto"
         style={{
-          backgroundColor: "#0f0c09",
-          borderTop: "1px solid #3a3028",
+          backgroundColor: "#ede9e4",
+          borderTop: "1px solid #d4c9bb",
         }}
       >
         <div className="container py-12">

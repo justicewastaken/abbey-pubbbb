@@ -29,25 +29,25 @@ const highlights = [
     icon: Beer,
     title: "Drinks",
     desc: "16 beers on tap, 48 bottled brews, cocktails, and a wide variety of spirits. Daily drink deals & Happy Hour Mon–Fri 3–5 PM.",
-    img: "https://d2xsxph8kpxj0f.cloudfront.net/310519663404247268/EU4KcD7bUaaniPuDkVKwNJ/abbey_drinks_5f6079fa.jpg",
+    color: "#d4820a",
   },
   {
     icon: Utensils,
     title: "Food",
     desc: "Pulled pork sandwiches, stuffed pretzels, house nachos, Heggie's pizza, and more. Food served daily till 1 AM.",
-    img: "https://d2xsxph8kpxj0f.cloudfront.net/310519663404247268/EU4KcD7bUaaniPuDkVKwNJ/abbey_food_7e5b8171.jpg",
+    color: "#c17a2a",
   },
   {
     icon: Users,
     title: "Atmosphere",
     desc: "Newly renovated old-fashioned pub vibe. Free pool, photo booth, free popcorn, heated bar, and a back patio.",
-    img: "https://d2xsxph8kpxj0f.cloudfront.net/310519663404247268/EU4KcD7bUaaniPuDkVKwNJ/abbey_patio_14a6eaf3.jpg",
+    color: "#a86208",
   },
   {
     icon: Calendar,
     title: "Events",
     desc: "Live music, downtown bingo, trivia nights, community events, and weekly specials. Always something going on.",
-    img: "https://d2xsxph8kpxj0f.cloudfront.net/310519663404247268/EU4KcD7bUaaniPuDkVKwNJ/abbey_events_92a99f12.jpg",
+    color: "#8b4f0a",
   },
 ];
 
@@ -64,44 +64,38 @@ function HighlightCard({ item, index }: { item: typeof highlights[0]; index: num
         transition: `opacity 0.6s ease ${index * 0.12}s, transform 0.6s ease ${index * 0.12}s`,
       }}
     >
-      <div className="relative overflow-hidden" style={{ height: "200px" }}>
-        <img
-          src={item.img}
-          alt={item.title}
-          className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
-          loading="lazy"
-        />
+      <div className="relative overflow-hidden flex items-center justify-center" style={{ height: "200px", backgroundColor: item.color }}>
         <div
-          className="absolute inset-0"
-          style={{
-            background: "linear-gradient(to top, rgba(26,20,16,0.85) 0%, rgba(26,20,16,0.2) 60%, transparent 100%)",
-          }}
-        />
-        <div
-          className="absolute bottom-3 left-4 flex items-center gap-2"
+          className="p-4 rounded-lg"
+          style={{ backgroundColor: "rgba(255,255,255,0.15)" }}
         >
-          <div
-            className="p-1.5 rounded-sm"
-            style={{ backgroundColor: "#d4820a" }}
-          >
-            <Icon size={14} style={{ color: "#1a1410" }} />
-          </div>
-          <span
-            style={{
-              fontFamily: "'Oswald', sans-serif",
-              fontSize: "1.1rem",
-              fontWeight: 600,
-              letterSpacing: "0.06em",
-              textTransform: "uppercase",
-              color: "#f0e8d0",
-            }}
-          >
-            {item.title}
-          </span>
+          <Icon size={48} style={{ color: "#ffffff" }} />
         </div>
       </div>
+      <div
+        className="flex items-center gap-2 px-5 pt-4 pb-2"
+      >
+        <div
+          className="p-1.5 rounded-sm"
+          style={{ backgroundColor: item.color }}
+        >
+          <Icon size={14} style={{ color: "#ffffff" }} />
+        </div>
+        <span
+          style={{
+            fontFamily: "'Oswald', sans-serif",
+            fontSize: "1.1rem",
+            fontWeight: 600,
+            letterSpacing: "0.06em",
+            textTransform: "uppercase",
+            color: "#2a2420",
+          }}
+        >
+          {item.title}
+        </span>
+      </div>
       <div className="p-5">
-        <p style={{ color: "#c8b89a", fontSize: "0.9rem", lineHeight: "1.7" }}>{item.desc}</p>
+        <p style={{ color: "#5a4a3a", fontSize: "0.9rem", lineHeight: "1.7" }}>{item.desc}</p>
       </div>
     </div>
   );
@@ -357,7 +351,7 @@ export default function Home() {
       {/* ── What to Expect ── */}
       <section
         className="py-20"
-        style={{ backgroundColor: "#1a1410" }}
+        style={{ backgroundColor: "#f5f1ed" }}
       >
         <div className="container">
           <div
@@ -372,7 +366,7 @@ export default function Home() {
             <h2 className="abbey-section-title mb-3">What to Expect</h2>
             <p
               className="mb-12 max-w-xl"
-              style={{ color: "#c8b89a", fontSize: "1rem", lineHeight: "1.7" }}
+              style={{ color: "#5a4a3a", fontSize: "1rem", lineHeight: "1.7" }}
             >
               A laid-back neighborhood pub where everyone feels welcome — from college students to longtime locals.
             </p>
@@ -398,7 +392,7 @@ export default function Home() {
       {/* ── Upcoming Events Preview ── */}
       <section
         className="py-20"
-        style={{ backgroundColor: "#1a1410" }}
+        style={{ backgroundColor: "#f5f1ed" }}
       >
         <div className="container">
           <div
@@ -415,7 +409,7 @@ export default function Home() {
               <h2 className="abbey-section-title mb-4">Upcoming Events</h2>
               <p
                 className="mb-6"
-                style={{ color: "#c8b89a", fontSize: "0.95rem", lineHeight: "1.7" }}
+                style={{ color: "#5a4a3a", fontSize: "0.95rem", lineHeight: "1.7" }}
               >
                 Live music, bingo, trivia, community events, and weekly specials. There's always something happening at The Abbey.
               </p>
@@ -464,46 +458,31 @@ export default function Home() {
       {/* ── About Snippet ── */}
       <section
         className="py-20 relative overflow-hidden"
-        style={{ backgroundColor: "#231e18" }}
+        style={{ backgroundColor: "#ede9e4" }}
       >
         <div className="container">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
-            {/* Image */}
-            <div className="relative">
-              <img
-                src="https://d2xsxph8kpxj0f.cloudfront.net/310519663404247268/EU4KcD7bUaaniPuDkVKwNJ/abbey_staff_story_0f4913f6.png"
-                alt="Abbey staff member with pulled pork sandwich"
-                className="w-full object-cover"
-                style={{ height: "380px", border: "1px solid #3a3028" }}
-                loading="lazy"
-              />
+            {/* Image removed - using text layout instead */}
+            <div>
               <div
-                className="absolute -bottom-4 -right-4 px-6 py-4"
                 style={{
-                  backgroundColor: "#d4820a",
-                  color: "#1a1410",
+                  fontFamily: "'Playfair Display', Georgia, serif",
+                  fontSize: "1.5rem",
+                  fontWeight: 700,
+                  lineHeight: 1,
                 }}
               >
-                <div
-                  style={{
-                    fontFamily: "'Playfair Display', Georgia, serif",
-                    fontSize: "1.5rem",
-                    fontWeight: 700,
-                    lineHeight: 1,
-                  }}
-                >
-                  Since
-                </div>
-                <div
-                  style={{
-                    fontFamily: "'Oswald', sans-serif",
-                    fontSize: "2rem",
-                    fontWeight: 700,
-                    lineHeight: 1,
-                  }}
-                >
-                  2013
-                </div>
+                Since
+              </div>
+              <div
+                style={{
+                  fontFamily: "'Oswald', sans-serif",
+                  fontSize: "2rem",
+                  fontWeight: 700,
+                  lineHeight: 1,
+                }}
+              >
+                2013
               </div>
             </div>
 
@@ -513,13 +492,13 @@ export default function Home() {
               <h2 className="abbey-section-title mb-6">A Menomonie Tradition</h2>
               <p
                 className="mb-4"
-                style={{ color: "#c8b89a", fontSize: "1rem", lineHeight: "1.8" }}
+                style={{ color: "#5a4a3a", fontSize: "1rem", lineHeight: "1.8" }}
               >
                 Tucked away on Main Street, The Abbey has quietly earned its place as one of Menomonie's favorite local hangouts. It's the kind of place where everyone feels welcome — from college students looking to unwind to longtime residents catching up over a drink.
               </p>
               <p
                 className="mb-8"
-                style={{ color: "#c8b89a", fontSize: "1rem", lineHeight: "1.8" }}
+                style={{ color: "#5a4a3a", fontSize: "1rem", lineHeight: "1.8" }}
               >
                 Newly renovated with an old-fashioned pub-like atmosphere — warm, unpretentious, and genuinely local. Between the free pool, fresh popcorn, great drinks, and friendly staff, it's more than just a bar. It's a Menomonie tradition.
               </p>
@@ -541,15 +520,9 @@ export default function Home() {
       <section
         className="py-16 relative overflow-hidden"
         style={{
-          backgroundImage: `url(https://d2xsxph8kpxj0f.cloudfront.net/310519663404247268/EU4KcD7bUaaniPuDkVKwNJ/abbey_bar_real_30f46fa1.jpg)`,
-          backgroundSize: "cover",
-          backgroundPosition: "center",
+          backgroundColor: "#d4820a",
         }}
       >
-        <div
-          className="absolute inset-0"
-          style={{ background: "rgba(26,20,16,0.82)" }}
-        />
         <div className="container relative z-10 text-center">
           <div className="abbey-section-label mb-3">Come On In</div>
           <h2
@@ -560,7 +533,7 @@ export default function Home() {
           </h2>
           <p
             className="mb-8 mx-auto"
-            style={{ color: "#c8b89a", fontSize: "1rem", maxWidth: "520px", lineHeight: "1.7" }}
+            style={{ color: "#ffffff", fontSize: "1rem", maxWidth: "520px", lineHeight: "1.7" }}
           >
             Check out our events calendar and plan your next visit. Live music, bingo, trivia, and specials every week.
           </p>
