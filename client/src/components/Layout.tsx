@@ -11,7 +11,6 @@ const navLinks = [
   { href: "/", label: "Home" },
   { href: "/events", label: "Events" },
   { href: "/menu", label: "Menu" },
-  { href: "/gallery", label: "Gallery" },
   { href: "/about", label: "About" },
   { href: "/contact", label: "Contact" },
 ];
@@ -45,7 +44,7 @@ export default function Layout({ children }: { children: React.ReactNode }) {
         }}
       >
         <div className="container">
-          <div className="flex items-center justify-between h-16 lg:h-20">
+          <div className="flex items-center justify-between h-20 lg:h-24">
             {/* Logo */}
             <Link href="/" className="flex items-center gap-2 group">
               <img
@@ -164,7 +163,7 @@ export default function Layout({ children }: { children: React.ReactNode }) {
       </header>
 
       {/* ── Main Content ── */}
-      <main className="flex-1 pt-16 lg:pt-20">
+      <main className="flex-1 pt-20 lg:pt-24">
         {children}
       </main>
 

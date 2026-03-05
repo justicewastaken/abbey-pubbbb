@@ -267,20 +267,7 @@ function EventCard({ event, onEdit, onDelete, showAdmin }: {
 
   return (
     <div className="abbey-card overflow-hidden">
-      {event.coverImage && (
-        <div className="relative overflow-hidden" style={{ height: "160px" }}>
-          <img
-            src={event.coverImage}
-            alt={event.title}
-            className="w-full h-full object-cover"
-            loading="lazy"
-          />
-          <div
-            className="absolute inset-0"
-            style={{ background: "linear-gradient(to top, rgba(26,20,16,0.8) 0%, transparent 60%)" }}
-          />
-        </div>
-      )}
+
       <div className="p-5">
         <div className="flex items-start justify-between gap-3 mb-3">
           <div className="flex items-center gap-3">

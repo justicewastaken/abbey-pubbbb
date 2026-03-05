@@ -29,25 +29,25 @@ const highlights = [
     icon: Beer,
     title: "Drinks",
     desc: "16 beers on tap, 48 bottled brews, cocktails, and a wide variety of spirits. Daily drink deals & Happy Hour Mon–Fri 3–5 PM.",
-    img: "https://d2xsxph8kpxj0f.cloudfront.net/310519663404247268/EU4KcD7bUaaniPuDkVKwNJ/abbey_drinks_5f6079fa.jpg",
+    color: "#d4820a",
   },
   {
     icon: Utensils,
     title: "Food",
     desc: "Pulled pork sandwiches, stuffed pretzels, house nachos, Heggie's pizza, and more. Food served daily till 1 AM.",
-    img: "https://d2xsxph8kpxj0f.cloudfront.net/310519663404247268/EU4KcD7bUaaniPuDkVKwNJ/abbey_food_7e5b8171.jpg",
+    color: "#c17a2a",
   },
   {
     icon: Users,
     title: "Atmosphere",
     desc: "Newly renovated old-fashioned pub vibe. Free pool, photo booth, free popcorn, heated bar, and a back patio.",
-    img: "https://d2xsxph8kpxj0f.cloudfront.net/310519663404247268/EU4KcD7bUaaniPuDkVKwNJ/abbey_patio_14a6eaf3.jpg",
+    color: "#a86208",
   },
   {
     icon: Calendar,
     title: "Events",
     desc: "Live music, downtown bingo, trivia nights, community events, and weekly specials. Always something going on.",
-    img: "https://d2xsxph8kpxj0f.cloudfront.net/310519663404247268/EU4KcD7bUaaniPuDkVKwNJ/abbey_events_92a99f12.jpg",
+    color: "#8b4f0a",
   },
 ];
 
@@ -64,41 +64,35 @@ function HighlightCard({ item, index }: { item: typeof highlights[0]; index: num
         transition: `opacity 0.6s ease ${index * 0.12}s, transform 0.6s ease ${index * 0.12}s`,
       }}
     >
-      <div className="relative overflow-hidden" style={{ height: "200px" }}>
-        <img
-          src={item.img}
-          alt={item.title}
-          className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
-          loading="lazy"
-        />
+      <div className="relative overflow-hidden flex items-center justify-center" style={{ height: "200px", backgroundColor: item.color }}>
         <div
-          className="absolute inset-0"
-          style={{
-            background: "linear-gradient(to top, rgba(26,20,16,0.85) 0%, rgba(26,20,16,0.2) 60%, transparent 100%)",
-          }}
-        />
-        <div
-          className="absolute bottom-3 left-4 flex items-center gap-2"
+          className="p-4 rounded-lg"
+          style={{ backgroundColor: "rgba(255,255,255,0.15)" }}
         >
-          <div
-            className="p-1.5 rounded-sm"
-            style={{ backgroundColor: "#d4820a" }}
-          >
-            <Icon size={14} style={{ color: "#1a1410" }} />
-          </div>
-          <span
-            style={{
-              fontFamily: "'Oswald', sans-serif",
-              fontSize: "1.1rem",
-              fontWeight: 600,
-              letterSpacing: "0.06em",
-              textTransform: "uppercase",
-              color: "#f0e8d0",
-            }}
-          >
-            {item.title}
-          </span>
+          <Icon size={48} style={{ color: "#ffffff" }} />
         </div>
+      </div>
+      <div
+        className="flex items-center gap-2 px-5 pt-4 pb-2"
+      >
+        <div
+          className="p-1.5 rounded-sm"
+          style={{ backgroundColor: item.color }}
+        >
+          <Icon size={14} style={{ color: "#ffffff" }} />
+        </div>
+        <span
+          style={{
+            fontFamily: "'Oswald', sans-serif",
+            fontSize: "1.1rem",
+            fontWeight: 600,
+            letterSpacing: "0.06em",
+            textTransform: "uppercase",
+            color: "#f0e8d0",
+          }}
+        >
+          {item.title}
+        </span>
       </div>
       <div className="p-5">
         <p style={{ color: "#c8b89a", fontSize: "0.9rem", lineHeight: "1.7" }}>{item.desc}</p>
