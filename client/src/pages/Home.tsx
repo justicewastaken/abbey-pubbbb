@@ -192,7 +192,7 @@ export default function Home() {
       {/* ── Hero Section ── */}
       <section
         className="relative flex items-center overflow-hidden"
-        style={{ minHeight: "60vh", height: "60vh" }}
+        style={{ minHeight: "75vh", height: "75vh" }}
       >
         {/* Background image */}
         <div
