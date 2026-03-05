@@ -49,9 +49,9 @@ export default function Layout({ children }: { children: React.ReactNode }) {
             {/* Logo */}
             <Link href="/" className="flex items-center gap-2 group">
               <img
-                src="https://d2xsxph8kpxj0f.cloudfront.net/310519663404247268/EU4KcD7bUaaniPuDkVKwNJ/abbey_logo_main_62e8b09d.png"
+                src="https://d2xsxph8kpxj0f.cloudfront.net/310519663404247268/EU4KcD7bUaaniPuDkVKwNJ/abbey_logo_new_b93e90e8.png"
                 alt="The Abbey Pub & Grub"
-                className="h-12 lg:h-14 w-auto object-contain transition-opacity duration-200 group-hover:opacity-80"
+                className="h-16 lg:h-20 w-auto object-contain transition-opacity duration-200 group-hover:opacity-80"
               />
             </Link>
 
@@ -182,9 +182,9 @@ export default function Layout({ children }: { children: React.ReactNode }) {
             <div>
               <div className="mb-4">
                 <img
-                  src="https://d2xsxph8kpxj0f.cloudfront.net/310519663404247268/EU4KcD7bUaaniPuDkVKwNJ/abbey_logo_main_62e8b09d.png"
+                  src="https://d2xsxph8kpxj0f.cloudfront.net/310519663404247268/EU4KcD7bUaaniPuDkVKwNJ/abbey_logo_new_b93e90e8.png"
                   alt="The Abbey Pub & Grub"
-                  className="h-16 w-auto object-contain mb-3"
+                  className="h-20 w-auto object-contain mb-3"
                 />
               </div>
               <p style={{ color: "#c8b89a", fontSize: "0.9rem", lineHeight: "1.7" }}>
