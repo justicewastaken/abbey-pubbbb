@@ -47,36 +47,12 @@ export default function Layout({ children }: { children: React.ReactNode }) {
         <div className="container">
           <div className="flex items-center justify-between h-16 lg:h-20">
             {/* Logo */}
-            <Link href="/" className="flex items-center gap-3 group">
+            <Link href="/" className="flex items-center gap-2 group">
               <img
-                src="https://d2xsxph8kpxj0f.cloudfront.net/310519663404247268/EU4KcD7bUaaniPuDkVKwNJ/abbey_logo_7fdbc0e2.jpeg"
+                src="https://d2xsxph8kpxj0f.cloudfront.net/310519663404247268/EU4KcD7bUaaniPuDkVKwNJ/abbey_logo_main_62e8b09d.png"
                 alt="The Abbey Pub & Grub"
-                className="w-10 h-10 lg:w-12 lg:h-12 rounded-full object-cover border-2 transition-all duration-200 group-hover:border-amber-400"
-                style={{ borderColor: "#d4820a55" }}
+                className="h-12 lg:h-14 w-auto object-contain transition-opacity duration-200 group-hover:opacity-80"
               />
-              <div className="hidden sm:block">
-                <div
-                  className="font-bold leading-tight"
-                  style={{
-                    fontFamily: "'Playfair Display', Georgia, serif",
-                    fontSize: "1.1rem",
-                    color: "#f0e8d0",
-                  }}
-                >
-                  The Abbey
-                </div>
-                <div
-                  style={{
-                    fontFamily: "'Oswald', sans-serif",
-                    fontSize: "0.65rem",
-                    letterSpacing: "0.15em",
-                    textTransform: "uppercase",
-                    color: "#d4820a",
-                  }}
-                >
-                  Pub &amp; Grub · Menomonie, WI
-                </div>
-              </div>
             </Link>
 
             {/* Desktop Nav */}
@@ -204,35 +180,12 @@ export default function Layout({ children }: { children: React.ReactNode }) {
           <div className="grid grid-cols-1 md:grid-cols-3 gap-10">
             {/* Brand */}
             <div>
-              <div className="flex items-center gap-3 mb-4">
+              <div className="mb-4">
                 <img
-                  src="https://d2xsxph8kpxj0f.cloudfront.net/310519663404247268/EU4KcD7bUaaniPuDkVKwNJ/abbey_logo_7fdbc0e2.jpeg"
-                  alt="The Abbey"
-                  className="w-12 h-12 rounded-full object-cover"
-                  style={{ border: "2px solid #d4820a55" }}
+                  src="https://d2xsxph8kpxj0f.cloudfront.net/310519663404247268/EU4KcD7bUaaniPuDkVKwNJ/abbey_logo_main_62e8b09d.png"
+                  alt="The Abbey Pub & Grub"
+                  className="h-16 w-auto object-contain mb-3"
                 />
-                <div>
-                  <div
-                    style={{
-                      fontFamily: "'Playfair Display', Georgia, serif",
-                      fontSize: "1.1rem",
-                      color: "#f0e8d0",
-                    }}
-                  >
-                    The Abbey Pub &amp; Grub
-                  </div>
-                  <div
-                    style={{
-                      fontFamily: "'Oswald', sans-serif",
-                      fontSize: "0.65rem",
-                      letterSpacing: "0.15em",
-                      textTransform: "uppercase",
-                      color: "#d4820a",
-                    }}
-                  >
-                    Menomonie, Wisconsin
-                  </div>
-                </div>
               </div>
               <p style={{ color: "#c8b89a", fontSize: "0.9rem", lineHeight: "1.7" }}>
                 Newly renovated old-fashioned, pub-like atmosphere. Your neighborhood spot in the heart of downtown Menomonie.
