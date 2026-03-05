@@ -471,8 +471,8 @@ export default function Home() {
             {/* Image */}
             <div className="relative">
               <img
-                src="https://d2xsxph8kpxj0f.cloudfront.net/310519663404247268/EU4KcD7bUaaniPuDkVKwNJ/abbey_exterior_23993b45.jpeg"
-                alt="The Abbey Pub exterior"
+                src="https://d2xsxph8kpxj0f.cloudfront.net/310519663404247268/EU4KcD7bUaaniPuDkVKwNJ/abbey_staff_story_0f4913f6.png"
+                alt="Abbey staff member with pulled pork sandwich"
                 className="w-full object-cover"
                 style={{ height: "380px", border: "1px solid #3a3028" }}
                 loading="lazy"
