@@ -30,12 +30,12 @@ export default function About() {
       <div
         className="relative py-24 overflow-hidden"
         style={{
-          backgroundImage: `url(https://d2xsxph8kpxj0f.cloudfront.net/310519663404247268/EU4KcD7bUaaniPuDkVKwNJ/abbey_hero_d8d381db.jpg)`,
+          backgroundImage: `url(https://d2xsxph8kpxj0f.cloudfront.net/310519663404247268/EU4KcD7bUaaniPuDkVKwNJ/abbey_bar_real_30f46fa1.jpg)`,
           backgroundSize: "cover",
-          backgroundPosition: "center 40%",
+          backgroundPosition: "center",
         }}
       >
-        <div className="absolute inset-0" style={{ background: "linear-gradient(to right, rgba(26,20,16,0.95) 0%, rgba(26,20,16,0.7) 60%, rgba(26,20,16,0.5) 100%)" }} />
+        <div className="absolute inset-0" style={{ background: "linear-gradient(105deg, rgba(26,20,16,0.88) 0%, rgba(26,20,16,0.72) 50%, rgba(26,20,16,0.45) 100%), rgba(212,130,10,0.15)" }} />
         <div className="container relative z-10 max-w-2xl">
           <div className="abbey-section-label mb-2">Our Story</div>
           <h1 className="abbey-section-title mb-6" style={{ fontSize: "clamp(2.5rem, 5vw, 4rem)" }}>
