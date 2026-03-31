@@ -378,7 +378,6 @@ export default function Events() {
   const today = new Date();
   const [currentYear, setCurrentYear] = useState(today.getFullYear());
   const [currentMonth, setCurrentMonth] = useState(today.getMonth());
-  const [activeFilters, setActiveFilters] = useState<EventCategory[]>([]);
   const [storedEvents, setStoredEvents] = useState<AbbeyEvent[]>(UPCOMING_EVENTS);
   const [view, setView] = useState<"list" | "calendar">("list");
   const [isRefreshing, setIsRefreshing] = useState(false);
@@ -417,17 +416,6 @@ export default function Events() {
         .slice(0, MAX_STORED_EVENTS),
     [storedEvents]
   );
-
-  const filteredEvents = useMemo(() => {
-    if (activeFilters.length === 0) return allEvents;
-    return allEvents.filter((e) => activeFilters.includes(e.category));
-  }, [allEvents, activeFilters]);
-
-  const toggleFilter = (cat: EventCategory) => {
-    setActiveFilters((prev) =>
-      prev.includes(cat) ? prev.filter((c) => c !== cat) : [...prev, cat]
-    );
-  };
 
   const refreshEvents = async () => {
     setIsRefreshing(true);
@@ -474,12 +462,12 @@ export default function Events() {
 
   const eventsByDate = useMemo(() => {
     const map: Record<string, AbbeyEvent[]> = {};
-    filteredEvents.forEach((e) => {
+    allEvents.forEach((e) => {
       if (!map[e.date]) map[e.date] = [];
       map[e.date].push(e);
     });
     return map;
-  }, [filteredEvents]);
+  }, [allEvents]);
 
   const prevMonth = () => {
     if (currentMonth === 0) {
@@ -552,28 +540,8 @@ export default function Events() {
           </p>
         </div>
 
-        <div className="flex flex-wrap gap-2 mb-8">
-          <button
-            onClick={() => setActiveFilters([])}
-            className={`filter-btn ${activeFilters.length === 0 ? "active" : ""}`}
-          >
-            All Events
-          </button>
-          {ALL_CATEGORIES.map((cat) => {
-            const Icon = CategoryIcon[cat];
-            return (
-              <button
-                key={cat}
-                onClick={() => toggleFilter(cat)}
-                className={`filter-btn flex items-center gap-1 ${activeFilters.includes(cat) ? "active" : ""}`}
-                style={activeFilters.includes(cat) ? { borderColor: CATEGORY_COLORS[cat], color: CATEGORY_COLORS[cat], backgroundColor: `${CATEGORY_COLORS[cat]}15` } : {}}
-              >
-                <Icon size={12} />
-                {cat}
-              </button>
-            );
-          })}
-          <div className="ml-auto flex gap-2">
+        <div className="flex justify-end gap-2 mb-8">
+          <div className="flex gap-2">
             <button
               onClick={() => setView("list")}
               className={`filter-btn ${view === "list" ? "active" : ""}`}
@@ -703,29 +671,23 @@ export default function Events() {
                 color: "#f0e8d0",
               }}
             >
-              {activeFilters.length > 0 ? `${activeFilters.join(", ")} Events` : "All Upcoming Events"}
+              All Upcoming Events
             </h2>
             <span style={{ color: "#6b5a3e", fontSize: "0.85rem" }}>
-              {filteredEvents.length} of {MAX_STORED_EVENTS} max
+              {allEvents.length} of {MAX_STORED_EVENTS} max
             </span>
           </div>
 
-          {filteredEvents.length === 0 ? (
+          {allEvents.length === 0 ? (
             <div className="text-center py-16" style={{ color: "#6b5a3e" }}>
               <Calendar size={40} className="mx-auto mb-4 opacity-30" />
               <p style={{ fontFamily: "'Playfair Display', Georgia, serif", fontSize: "1.1rem" }}>
-                No events found for the selected filters.
+                No events found right now.
               </p>
-              <button
-                onClick={() => setActiveFilters([])}
-                className="abbey-btn-outline mt-4 text-sm"
-              >
-                Clear Filters
-              </button>
             </div>
           ) : (
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-              {filteredEvents.map((event) => (
+              {allEvents.map((event) => (
                 <EventCard
                   key={event.id}
                   event={event}
