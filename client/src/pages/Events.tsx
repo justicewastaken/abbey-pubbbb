@@ -4,7 +4,7 @@
    Design: "Worn Leather & Amber Light"
    ============================================================ */
 
-import { useState, useMemo } from "react";
+import { useEffect, useMemo, useState } from "react";
 import { Calendar, ChevronLeft, ChevronRight, Clock, Download, Facebook, Music, Gamepad2, Tag, Users, HelpCircle, Star, Trash2, Edit2, X } from "lucide-react";
 import { MAX_STORED_EVENTS, UPCOMING_EVENTS, ALL_CATEGORIES, CATEGORY_COLORS, type AbbeyEvent, type EventCategory } from "../data/events";
 
@@ -381,6 +381,34 @@ export default function Events() {
   const [activeFilters, setActiveFilters] = useState<EventCategory[]>([]);
   const [storedEvents, setStoredEvents] = useState<AbbeyEvent[]>(UPCOMING_EVENTS);
   const [view, setView] = useState<"list" | "calendar">("list");
+  const [isRefreshing, setIsRefreshing] = useState(false);
+  const [refreshMessage, setRefreshMessage] = useState<string>("");
+
+  useEffect(() => {
+    let cancelled = false;
+
+    async function loadEvents() {
+      try {
+        const response = await fetch(`/api/events?ts=${Date.now()}`, {
+          cache: "no-store",
+        });
+        if (!response.ok) return;
+
+        const events = (await response.json()) as AbbeyEvent[];
+        if (!cancelled && Array.isArray(events) && events.length > 0) {
+          setStoredEvents(events.slice(0, MAX_STORED_EVENTS));
+        }
+      } catch {
+        // Keep local fallback data if the API is unavailable.
+      }
+    }
+
+    void loadEvents();
+
+    return () => {
+      cancelled = true;
+    };
+  }, []);
 
   const allEvents = useMemo(
     () =>
@@ -401,9 +429,40 @@ export default function Events() {
     );
   };
 
-  const refreshEvents = () => {
-    setStoredEvents([...UPCOMING_EVENTS].slice(0, MAX_STORED_EVENTS));
-    window.location.reload();
+  const refreshEvents = async () => {
+    setIsRefreshing(true);
+    setRefreshMessage("Requesting Facebook refresh...");
+
+    try {
+      const response = await fetch("/api/events/refresh", {
+        method: "POST",
+      });
+
+      if (!response.ok) {
+        throw new Error("Refresh trigger failed");
+      }
+
+      setRefreshMessage("Refresh started. Facebook events should update here in about 1-2 minutes.");
+
+      window.setTimeout(async () => {
+        try {
+          const latest = await fetch(`/api/events?ts=${Date.now()}`, {
+            cache: "no-store",
+          });
+          if (!latest.ok) return;
+          const events = (await latest.json()) as AbbeyEvent[];
+          if (Array.isArray(events) && events.length > 0) {
+            setStoredEvents(events.slice(0, MAX_STORED_EVENTS));
+          }
+        } catch {
+          // Leave existing data in place.
+        }
+      }, 15000);
+    } catch {
+      setRefreshMessage("Refresh could not be started. Try again in a moment.");
+    } finally {
+      setIsRefreshing(false);
+    }
   };
 
   const daysInMonth = getDaysInMonth(currentYear, currentMonth);
@@ -458,8 +517,8 @@ export default function Events() {
             Live music, bingo, trivia, community events, and weekly specials. We keep this page focused to the next {MAX_STORED_EVENTS} upcoming events.
           </p>
           <div className="flex gap-3 mt-6">
-            <button onClick={refreshEvents} className="abbey-btn-primary">
-              Refresh Events
+            <button onClick={() => void refreshEvents()} className="abbey-btn-primary" disabled={isRefreshing}>
+              {isRefreshing ? "Refreshing..." : "Refresh Events"}
             </button>
             <a
               href="https://www.facebook.com/theabbeypubandgrub/events"
@@ -472,6 +531,11 @@ export default function Events() {
               See Events on Facebook
             </a>
           </div>
+          {refreshMessage && (
+            <p style={{ color: "#8a7a6a", fontSize: "0.85rem", marginTop: "0.9rem" }}>
+              {refreshMessage}
+            </p>
+          )}
         </div>
       </div>
 
