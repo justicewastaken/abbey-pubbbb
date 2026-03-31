@@ -8,7 +8,7 @@ import { Beer, Utensils, Music, Gamepad2, Users, MapPin, Phone, Calendar, Star }
 
 const features = [
   { icon: Beer, title: "16 Beers on Tap", desc: "Rotating taps including local Wisconsin favorites, Guinness, Spotted Cow, and more. Plus 48 bottled and canned options." },
-  { icon: Utensils, title: "Late-Night Food", desc: "Kitchen open daily until 1 AM. Pulled pork sandwiches, stuffed pretzels, nachos, Heggie's pizza, and more." },
+  { icon: Utensils, title: "Late-Night Food", desc: "Pulled pork sandwiches, stuffed pretzels, house nacho, Brew Pub Lotzza Motzza pizza, and more." },
   { icon: Music, title: "Live Music", desc: "Local and regional artists perform regularly. Check our events calendar and Facebook for upcoming shows." },
   { icon: Gamepad2, title: "Bingo & Trivia", desc: "Downtown Bingo nights, trivia Tuesdays, and more community events throughout the month." },
   { icon: Users, title: "Free Pool", desc: "Free pool tables available every night. Bring your friends and play a few rounds." },
@@ -227,7 +227,9 @@ export default function About() {
               <div style={{ fontFamily: "'Oswald', sans-serif", fontSize: "0.75rem", letterSpacing: "0.15em", textTransform: "uppercase", color: "#d4820a", marginBottom: "0.3rem" }}>
                 Hours
               </div>
-              <p style={{ color: "#c8b89a", fontSize: "0.9rem" }}>Mon–Sun<br />12:00 PM – 2:00 AM</p>
+              <p style={{ color: "#c8b89a", fontSize: "0.9rem" }}>Mon–Thu<br />3:00 PM – 2:00 AM</p>
+              <p style={{ color: "#c8b89a", fontSize: "0.9rem", marginTop: "0.5rem" }}>Fri–Sat<br />12:00 PM – 2:30 AM</p>
+              <p style={{ color: "#c8b89a", fontSize: "0.9rem", marginTop: "0.5rem" }}>Sunday<br />12:00 PM – 2:00 AM</p>
             </div>
           </div>
         </div>

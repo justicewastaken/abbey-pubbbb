@@ -8,12 +8,12 @@ import { useState } from "react";
 import { MapPin, Phone, Clock, Facebook, Instagram, ExternalLink, CheckCircle } from "lucide-react";
 
 const hours = [
-  { day: "Monday", open: "12:00 PM", close: "2:00 AM" },
-  { day: "Tuesday", open: "12:00 PM", close: "2:00 AM" },
-  { day: "Wednesday", open: "12:00 PM", close: "2:00 AM" },
-  { day: "Thursday", open: "12:00 PM", close: "2:00 AM" },
-  { day: "Friday", open: "12:00 PM", close: "2:00 AM" },
-  { day: "Saturday", open: "12:00 PM", close: "2:00 AM" },
+  { day: "Monday", open: "3:00 PM", close: "2:00 AM" },
+  { day: "Tuesday", open: "3:00 PM", close: "2:00 AM" },
+  { day: "Wednesday", open: "3:00 PM", close: "2:00 AM" },
+  { day: "Thursday", open: "3:00 PM", close: "2:00 AM" },
+  { day: "Friday", open: "12:00 PM", close: "2:30 AM" },
+  { day: "Saturday", open: "12:00 PM", close: "2:30 AM" },
   { day: "Sunday", open: "12:00 PM", close: "2:00 AM" },
 ];
 

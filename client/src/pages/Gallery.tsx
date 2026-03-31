@@ -26,7 +26,7 @@ const galleryImages = [
     src: "https://d2xsxph8kpxj0f.cloudfront.net/310519663404247268/EU4KcD7bUaaniPuDkVKwNJ/abbey_food_7e5b8171.jpg",
     alt: "Food at The Abbey — pulled pork, nachos, and more",
     category: "Food",
-    caption: "Pulled pork sandwiches, stuffed pretzels, nachos, and Heggie's pizza.",
+    caption: "Pulled pork sandwiches, stuffed pretzels, house nacho, and Brew Pub Lotzza Motzza pizza.",
   },
   {
     id: 4,

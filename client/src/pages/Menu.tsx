@@ -26,22 +26,47 @@ const menuSections = [
       {
         name: "Georgia Pork Tacos",
         price: "$8",
-        description: "Pulled pork with peaches topped with spicy slaw and served with a side of salsa.",
+        description: "Pulled pork with peaches served with a side of salsa.",
       },
       {
-        name: "Soup & Slaw",
+        name: "Sandy",
+        price: "$10",
+        description: "",
+      },
+      {
+        name: `Matt's Hero`,
+        price: "$11",
+        description: "Pepperoni, salami, mozz, provolone, gold sauce, red onion.",
+      },
+      {
+        name: `"Grilled" Cheese`,
+        price: "$7",
+        description: "Pepper jack, cheddar, toasted bun, onion, gold sauce. Served with chips and a pickle!",
+      },
+      {
+        name: "Brat",
+        price: "$5",
+        description: "",
+      },
+      {
+        name: "2 Brats",
+        price: "$9",
+        description: "",
+      },
+      {
+        name: "Jumbo All Beef Hot Dog",
         price: "$6",
-        description: "Your choice of soup paired with our broccoli bacon slaw.",
+        description: "",
       },
       {
-        name: "Cup of Soup",
-        price: "$3.50",
-        description: "Ask your bartender for today's soup.",
+        name: "Vegan Dog",
+        price: "$6",
+        description: "",
       },
       {
-        name: "Broccoli Bacon Slaw",
-        price: "$3.50",
-        description: "House-made broccoli slaw with bacon. A fan favorite.",
+        name: "Corn Dog",
+        price: "$4",
+        description: "",
       },
     ],
   },
@@ -51,14 +76,14 @@ const menuSections = [
     icon: Coffee,
     items: [
       {
-        name: "House Nachos",
-        price: "$8",
+        name: "House Nacho *GF",
+        price: "$10",
         description: "Kettle chips topped with smothered pulled pork, Parmesan, & Cajun horseradish.",
         popular: true,
       },
       {
         name: "Stuffed Pretzel",
-        price: "$5",
+        price: "$10",
         description: "Soft pretzel stuffed with pepperjack cheese. Served with our smothered sauce.",
         popular: true,
       },
@@ -72,20 +97,44 @@ const menuSections = [
         price: "On Us",
         description: "Freshly popped popcorn — always free at The Abbey. A classic touch.",
       },
+      {
+        name: "Shrimp Cocktail *",
+        price: "$9",
+        description: "Seasonal item.",
+      },
+      {
+        name: "Potato Salad *",
+        price: "$4",
+        description: "Seasonal item.",
+      },
+      {
+        name: "String Cheese",
+        price: "$1",
+        description: "",
+      },
+      {
+        name: "Candy Bar",
+        price: "$2",
+        description: "",
+      },
+      {
+        name: "Nichols Inn Rotating Desserts",
+        price: "$5",
+        description: "",
+      },
     ],
   },
   {
     id: "pizza",
-    label: "Heggie's Pizza",
+    label: "Brew Pub Lotzza Motzza",
     icon: Pizza,
-    note: "Available in 9\" and 12\" sizes.",
+    note: "Ask your bartender about current availability.",
     items: [
-      { name: "Double Cheese", price: "$7 / $11", description: "Classic double cheese pizza." },
-      { name: "Six Pack", price: "$9 / $13", description: "Six-topping pizza — ask your bartender for today's options." },
-      { name: "Sausage & Mushroom", price: "$9", description: "Classic sausage and mushroom combo." },
-      { name: "Chicken Alfredo", price: "$13", description: "Creamy chicken alfredo pizza." },
-      { name: "Pepperoni", price: "$9", description: "Classic pepperoni pizza." },
-      { name: "Breakfast", price: "$13", description: "Breakfast pizza — a unique Abbey offering." },
+      { name: "Abbey Style", price: "$16", description: "" },
+      { name: "Stadium Steak", price: "$14", description: "" },
+      { name: "Stadium Kicker", price: "$14", description: "" },
+      { name: "Cheese", price: "$12", description: "" },
+      { name: "Cheese (To Go)", price: "$10", description: "Available to go." },
     ],
   },
   {
@@ -122,7 +171,7 @@ export default function Menu() {
           <div className="abbey-section-label mb-2">What We Serve</div>
           <h1 className="abbey-section-title mb-4">Our Menu</h1>
           <p style={{ color: "#c8b89a", fontSize: "1rem", maxWidth: "520px", lineHeight: "1.7" }}>
-            A focused menu done right. Pulled pork, stuffed pretzels, nachos, pizza, and all the drinks you need. Food served daily till 1 AM.
+            A focused menu done right. Sandwiches, snacks, pizza, drinks, and seasonal favorites — all in one place.
           </p>
           <div className="flex gap-3 mt-6">
             <a
@@ -173,7 +222,7 @@ export default function Menu() {
               >
                 Facebook page
               </a>
-              . Food served daily until 1 AM.
+              .
             </p>
           </div>
         </div>
@@ -234,9 +283,11 @@ export default function Menu() {
                             <span className="abbey-tag">Popular</span>
                           )}
                         </div>
-                        <p style={{ color: "#c8b89a", fontSize: "0.85rem", lineHeight: "1.6" }}>
-                          {item.description}
-                        </p>
+                        {item.description ? (
+                          <p style={{ color: "#c8b89a", fontSize: "0.85rem", lineHeight: "1.6" }}>
+                            {item.description}
+                          </p>
+                        ) : null}
                       </div>
                       <div
                         className="flex-shrink-0"

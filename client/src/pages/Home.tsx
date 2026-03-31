@@ -34,7 +34,7 @@ const highlights = [
   {
     icon: Utensils,
     title: "Food",
-    desc: "Pulled pork sandwiches, stuffed pretzels, house nachos, Heggie's pizza, and more. Food served daily till 1 AM.",
+    desc: "Pulled pork sandwiches, stuffed pretzels, house nacho, Brew Pub Lotzza Motzza pizza, and more.",
     color: "#c17a2a",
   },
   {
@@ -327,7 +327,7 @@ export default function Home() {
                 Open Daily
               </span>
               <span style={{ color: "#c8b89a", fontSize: "0.85rem" }}>
-                12:00 PM – 2:00 AM
+                Mon–Thu 3:00 PM – 2:00 AM · Fri–Sat 12:00 PM – 2:30 AM · Sun 12:00 PM – 2:00 AM
               </span>
             </div>
             <div className="flex items-center gap-4">
