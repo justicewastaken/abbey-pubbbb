@@ -33,7 +33,7 @@ const galleryImages = [
     src: "https://d2xsxph8kpxj0f.cloudfront.net/310519663404247268/EU4KcD7bUaaniPuDkVKwNJ/abbey_events_92a99f12.jpg",
     alt: "Live music and events at The Abbey",
     category: "Events",
-    caption: "Live music nights, bingo, and community events every week.",
+    caption: "Live music nights, bingo, and community events.",
   },
   {
     id: 5,
