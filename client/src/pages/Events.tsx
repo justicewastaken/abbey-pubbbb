@@ -6,7 +6,7 @@
 
 import { useState, useMemo } from "react";
 import { Calendar, ChevronLeft, ChevronRight, Clock, ExternalLink, Download, Plus, Trash2, Edit2, X, Facebook, Music, Gamepad2, Tag, Users, HelpCircle, Star } from "lucide-react";
-import { UPCOMING_EVENTS, ALL_CATEGORIES, CATEGORY_COLORS, type AbbeyEvent, type EventCategory } from "../data/events";
+import { MAX_STORED_EVENTS, UPCOMING_EVENTS, ALL_CATEGORIES, CATEGORY_COLORS, type AbbeyEvent, type EventCategory } from "../data/events";
 
 // ── ICS Generator ──────────────────────────────────────────
 function generateICS(event: AbbeyEvent): string {
@@ -389,10 +389,17 @@ export default function Events() {
   const [showAdmin, setShowAdmin] = useState(false);
   const [adminModal, setAdminModal] = useState(false);
   const [editEvent, setEditEvent] = useState<AbbeyEvent | null>(null);
+  const [storedEvents, setStoredEvents] = useState<AbbeyEvent[]>(UPCOMING_EVENTS);
   const [customEvents, setCustomEvents] = useState<AbbeyEvent[]>([]);
   const [view, setView] = useState<"list" | "calendar">("list");
 
-  const allEvents = useMemo(() => [...UPCOMING_EVENTS, ...customEvents].sort((a, b) => a.date.localeCompare(b.date)), [customEvents]);
+  const allEvents = useMemo(
+    () =>
+      [...storedEvents, ...customEvents]
+        .sort((a, b) => a.date.localeCompare(b.date))
+        .slice(0, MAX_STORED_EVENTS),
+    [customEvents, storedEvents]
+  );
 
   const filteredEvents = useMemo(() => {
     if (activeFilters.length === 0) return allEvents;
@@ -408,10 +415,9 @@ export default function Events() {
   const handleAddEvent = (event: AbbeyEvent) => {
     if (editEvent) {
       setCustomEvents((prev) => prev.map((e) => (e.id === event.id ? event : e)));
-      const idx = UPCOMING_EVENTS.findIndex((e) => e.id === event.id);
-      if (idx !== -1) UPCOMING_EVENTS[idx] = event;
+      setStoredEvents((prev) => prev.map((e) => (e.id === event.id ? event : e)));
     } else {
-      setCustomEvents((prev) => [...prev, event]);
+      setCustomEvents((prev) => [...prev, event].slice(0, MAX_STORED_EVENTS));
     }
     setEditEvent(null);
   };
@@ -466,8 +472,8 @@ export default function Events() {
         <div className="container relative z-10">
           <div className="abbey-section-label mb-2">What's On</div>
           <h1 className="abbey-section-title mb-4">Events at The Abbey</h1>
-          <p style={{ color: "#c8b89a", fontSize: "1rem", maxWidth: "520px", lineHeight: "1.7" }}>
-            Live music, bingo, trivia, community events, and weekly specials. Check back often or follow us on Facebook for the latest.
+            <p style={{ color: "#c8b89a", fontSize: "1rem", maxWidth: "520px", lineHeight: "1.7" }}>
+            Live music, bingo, trivia, community events, and weekly specials. We keep this page focused to the next {MAX_STORED_EVENTS} upcoming events.
           </p>
           <div className="flex gap-3 mt-6">
             <a
@@ -514,14 +520,14 @@ export default function Events() {
               </h3>
               <div className="flex gap-3">
                 <a
-                  href="https://www.facebook.com/theabbeypubandgrub"
+                  href="https://www.facebook.com/theabbeypubandgrub/events"
                   target="_blank"
                   rel="noopener noreferrer"
                   className="abbey-btn-outline text-xs py-2 px-3"
                   style={{ fontSize: "0.75rem" }}
                 >
                   <Facebook size={12} />
-                  Pull from Facebook
+                  Open Facebook Events
                 </a>
                 <button
                   onClick={() => { setEditEvent(null); setAdminModal(true); }}
@@ -534,7 +540,7 @@ export default function Events() {
               </div>
             </div>
             <p style={{ color: "#8a7a6a", fontSize: "0.85rem" }}>
-              Add or edit events manually below. For the latest events, click "Pull from Facebook" to visit the Facebook page.
+              The page displays up to {MAX_STORED_EVENTS} events at a time. Add or edit items here for layout checks, and use Facebook as the source list before the next site refresh.
               {customEvents.length > 0 && (
                 <span style={{ color: "#d4820a" }}> {customEvents.length} custom event(s) added.</span>
               )}
@@ -697,7 +703,7 @@ export default function Events() {
               {activeFilters.length > 0 ? `${activeFilters.join(", ")} Events` : "All Upcoming Events"}
             </h2>
             <span style={{ color: "#6b5a3e", fontSize: "0.85rem" }}>
-              {filteredEvents.length} event{filteredEvents.length !== 1 ? "s" : ""}
+              {filteredEvents.length} of {MAX_STORED_EVENTS} max
             </span>
           </div>
 
