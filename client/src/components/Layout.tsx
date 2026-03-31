@@ -258,7 +258,7 @@ export default function Layout({ children }: { children: React.ReactNode }) {
                 </div>
                 <div className="flex items-start gap-2">
                   <Calendar size={16} style={{ color: "#d4820a", marginTop: "2px", flexShrink: 0 }} />
-                  <span>Mon–Sun: 12:00 PM – 2:00 AM</span>
+                  <span>Mon–Thu: 3:00 PM – 2:00 AM<br />Fri–Sat: 12:00 PM – 2:30 AM<br />Sun: 12:00 PM – 2:00 AM</span>
                 </div>
                 <div className="flex gap-3 mt-4">
                   <a

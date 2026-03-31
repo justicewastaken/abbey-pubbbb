@@ -503,7 +503,7 @@ export default function Events() {
           <div className="abbey-section-label mb-2">What's On</div>
           <h1 className="abbey-section-title mb-4">Events at The Abbey</h1>
           <p style={{ color: "#c8b89a", fontSize: "1rem", maxWidth: "520px", lineHeight: "1.7" }}>
-            Live music, bingo, trivia, community events, and weekly specials. We keep this page focused to the next {MAX_STORED_EVENTS} upcoming events.
+            Facebook is the source for this page. We keep the latest {MAX_STORED_EVENTS} events shown in the Abbey layout here and link back to Facebook for the full details.
           </p>
           <div className="flex gap-3 mt-6">
             <button onClick={() => void refreshEvents()} className="abbey-btn-primary" disabled={isRefreshing}>
@@ -537,7 +537,7 @@ export default function Events() {
           }}
         >
           <p style={{ color: "#8a7a6a", fontSize: "0.9rem" }}>
-            This page shows up to {MAX_STORED_EVENTS} upcoming events. Use refresh to reload the latest stored event list, or open Facebook for the full event feed.
+            This page shows up to {MAX_STORED_EVENTS} events pulled from the Abbey Facebook page. Use refresh to request a new sync, or open Facebook for the full event feed.
           </p>
         </div>
 
@@ -672,7 +672,7 @@ export default function Events() {
                 color: "#f0e8d0",
               }}
             >
-              All Upcoming Events
+              Latest Facebook Events
             </h2>
             <span style={{ color: "#6b5a3e", fontSize: "0.85rem" }}>
               {allEvents.length} of {MAX_STORED_EVENTS} max
