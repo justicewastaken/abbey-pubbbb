@@ -20,6 +20,7 @@ export const onRequestPost = async ({ env }) => {
       accept: "application/vnd.github+json",
       "content-type": "application/json",
       "user-agent": "abbey-events-refresh",
+      "x-github-api-version": "2022-11-28",
     },
     body: JSON.stringify({ ref: "main" }),
   });
