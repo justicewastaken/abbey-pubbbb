@@ -51,7 +51,7 @@ function dedupeEvents(events: AbbeyEvent[]): AbbeyEvent[] {
 export const UPCOMING_EVENTS: AbbeyEvent[] = dedupeEvents(
   (rawEvents as AbbeyEvent[])
     .map(normalizeEvent)
-    .sort((a, b) => a.date.localeCompare(b.date))
+    .sort((a, b) => b.date.localeCompare(a.date))
 ).slice(0, MAX_STORED_EVENTS);
 
 export const CATEGORY_COLORS: Record<EventCategory, string> = {

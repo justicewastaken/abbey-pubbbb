@@ -413,7 +413,7 @@ export default function Events() {
   const allEvents = useMemo(
     () =>
       [...storedEvents]
-        .sort((a, b) => a.date.localeCompare(b.date))
+        .sort((a, b) => b.date.localeCompare(a.date))
         .slice(0, MAX_STORED_EVENTS),
     [storedEvents]
   );
