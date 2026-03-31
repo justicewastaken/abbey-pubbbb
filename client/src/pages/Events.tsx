@@ -5,7 +5,7 @@
    ============================================================ */
 
 import { useState, useMemo } from "react";
-import { Calendar, ChevronLeft, ChevronRight, Clock, ExternalLink, Download, Plus, Trash2, Edit2, X, Facebook, Music, Gamepad2, Tag, Users, HelpCircle, Star } from "lucide-react";
+import { Calendar, ChevronLeft, ChevronRight, Clock, Download, Facebook, Music, Gamepad2, Tag, Users, HelpCircle, Star, Trash2, Edit2, X } from "lucide-react";
 import { MAX_STORED_EVENTS, UPCOMING_EVENTS, ALL_CATEGORIES, CATEGORY_COLORS, type AbbeyEvent, type EventCategory } from "../data/events";
 
 // ── ICS Generator ──────────────────────────────────────────
@@ -386,19 +386,15 @@ export default function Events() {
   const [currentYear, setCurrentYear] = useState(today.getFullYear());
   const [currentMonth, setCurrentMonth] = useState(today.getMonth());
   const [activeFilters, setActiveFilters] = useState<EventCategory[]>([]);
-  const [showAdmin, setShowAdmin] = useState(false);
-  const [adminModal, setAdminModal] = useState(false);
-  const [editEvent, setEditEvent] = useState<AbbeyEvent | null>(null);
   const [storedEvents, setStoredEvents] = useState<AbbeyEvent[]>(UPCOMING_EVENTS);
-  const [customEvents, setCustomEvents] = useState<AbbeyEvent[]>([]);
   const [view, setView] = useState<"list" | "calendar">("list");
 
   const allEvents = useMemo(
     () =>
-      [...storedEvents, ...customEvents]
+      [...storedEvents]
         .sort((a, b) => a.date.localeCompare(b.date))
         .slice(0, MAX_STORED_EVENTS),
-    [customEvents, storedEvents]
+    [storedEvents]
   );
 
   const filteredEvents = useMemo(() => {
@@ -412,23 +408,9 @@ export default function Events() {
     );
   };
 
-  const handleAddEvent = (event: AbbeyEvent) => {
-    if (editEvent) {
-      setCustomEvents((prev) => prev.map((e) => (e.id === event.id ? event : e)));
-      setStoredEvents((prev) => prev.map((e) => (e.id === event.id ? event : e)));
-    } else {
-      setCustomEvents((prev) => [...prev, event].slice(0, MAX_STORED_EVENTS));
-    }
-    setEditEvent(null);
-  };
-
-  const handleDelete = (id: string) => {
-    setCustomEvents((prev) => prev.filter((e) => e.id !== id));
-  };
-
-  const handleEdit = (event: AbbeyEvent) => {
-    setEditEvent(event);
-    setAdminModal(true);
+  const refreshEvents = () => {
+    setStoredEvents([...UPCOMING_EVENTS].slice(0, MAX_STORED_EVENTS));
+    window.location.reload();
   };
 
   // Calendar data
@@ -472,81 +454,42 @@ export default function Events() {
         <div className="container relative z-10">
           <div className="abbey-section-label mb-2">What's On</div>
           <h1 className="abbey-section-title mb-4">Events at The Abbey</h1>
-            <p style={{ color: "#c8b89a", fontSize: "1rem", maxWidth: "520px", lineHeight: "1.7" }}>
+          <p style={{ color: "#c8b89a", fontSize: "1rem", maxWidth: "520px", lineHeight: "1.7" }}>
             Live music, bingo, trivia, community events, and weekly specials. We keep this page focused to the next {MAX_STORED_EVENTS} upcoming events.
           </p>
           <div className="flex gap-3 mt-6">
-            <a
-              href="https://www.facebook.com/theabbeypubandgrub"
-              target="_blank"
-              rel="noopener noreferrer"
+            <button
+              onClick={refreshEvents}
               className="abbey-btn-primary"
             >
-              <Facebook size={16} />
-              Follow on Facebook
-            </a>
-            <button
-              onClick={() => { setShowAdmin(!showAdmin); }}
+              Refresh Events
+            </button>
+            <a
+              href="https://www.facebook.com/theabbeypubandgrub/events"
+              target="_blank"
+              rel="noopener noreferrer"
               className="abbey-btn-outline"
               style={{ fontSize: "0.8rem" }}
             >
-              {showAdmin ? "Hide" : "Staff"} Admin
-            </button>
+              <Facebook size={16} />
+              See Events on Facebook
+            </a>
           </div>
         </div>
       </div>
 
       <div className="container py-12">
-        {/* Admin Panel */}
-        {showAdmin && (
-          <div
-            className="mb-10 p-6"
-            style={{
-              backgroundColor: "#231e18",
-              border: "1px solid #d4820a44",
-            }}
-          >
-            <div className="flex items-center justify-between mb-4">
-              <h3
-                style={{
-                  fontFamily: "'Oswald', sans-serif",
-                  fontSize: "0.85rem",
-                  letterSpacing: "0.15em",
-                  textTransform: "uppercase",
-                  color: "#d4820a",
-                }}
-              >
-                Staff Events Manager
-              </h3>
-              <div className="flex gap-3">
-                <a
-                  href="https://www.facebook.com/theabbeypubandgrub/events"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="abbey-btn-outline text-xs py-2 px-3"
-                  style={{ fontSize: "0.75rem" }}
-                >
-                  <Facebook size={12} />
-                  Open Facebook Events
-                </a>
-                <button
-                  onClick={() => { setEditEvent(null); setAdminModal(true); }}
-                  className="abbey-btn-primary text-xs py-2 px-3"
-                  style={{ fontSize: "0.75rem" }}
-                >
-                  <Plus size={12} />
-                  Add Event
-                </button>
-              </div>
-            </div>
-            <p style={{ color: "#8a7a6a", fontSize: "0.85rem" }}>
-              The page displays up to {MAX_STORED_EVENTS} events at a time. Add or edit items here for layout checks, and use Facebook as the source list before the next site refresh.
-              {customEvents.length > 0 && (
-                <span style={{ color: "#d4820a" }}> {customEvents.length} custom event(s) added.</span>
-              )}
-            </p>
-          </div>
-        )}
+        <div
+          className="mb-10 p-6"
+          style={{
+            backgroundColor: "#231e18",
+            border: "1px solid #3a3028",
+          }}
+        >
+          <p style={{ color: "#8a7a6a", fontSize: "0.9rem" }}>
+            This page shows up to {MAX_STORED_EVENTS} upcoming events. Use refresh to reload the latest stored event list, or open Facebook for the full event feed.
+          </p>
+        </div>
 
         {/* Filters */}
         <div className="flex flex-wrap gap-2 mb-8">
@@ -729,9 +672,9 @@ export default function Events() {
                 <EventCard
                   key={event.id}
                   event={event}
-                  onEdit={handleEdit}
-                  onDelete={handleDelete}
-                  showAdmin={showAdmin}
+                  onEdit={() => undefined}
+                  onDelete={() => undefined}
+                  showAdmin={false}
                 />
               ))}
             </div>
@@ -769,14 +712,6 @@ export default function Events() {
         </div>
       </div>
 
-      {/* Admin Modal */}
-      {adminModal && (
-        <AdminModal
-          onClose={() => { setAdminModal(false); setEditEvent(null); }}
-          onAdd={handleAddEvent}
-          editEvent={editEvent}
-        />
-      )}
     </div>
   );
 }
