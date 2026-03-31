@@ -261,6 +261,7 @@ function EventCard({ event, onEdit, onDelete, showAdmin }: {
 }) {
   const Icon = CategoryIcon[event.category] || Tag;
   const color = CATEGORY_COLORS[event.category] || "#c8b89a";
+  const eventYear = event.date.split("-")[0];
 
   return (
     <div className="abbey-card overflow-hidden">
@@ -297,7 +298,7 @@ function EventCard({ event, onEdit, onDelete, showAdmin }: {
               </h3>
               <div className="flex items-center gap-1 mt-1" style={{ color: "#c8b89a", fontSize: "0.8rem" }}>
                 <Clock size={12} style={{ color }} />
-                {event.time}{event.endTime ? ` – ${event.endTime}` : ""}
+                {event.time}{event.endTime ? ` – ${event.endTime}` : ""} · {eventYear}
               </div>
             </div>
           </div>
