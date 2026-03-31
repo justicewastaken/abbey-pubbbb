@@ -31,7 +31,7 @@ const menuSections = [
       {
         name: "Sandy",
         price: "$10",
-        description: "",
+        description: "Ask your bartender for the current Sandy build.",
       },
       {
         name: `Matt's Hero`,
@@ -46,27 +46,27 @@ const menuSections = [
       {
         name: "Brat",
         price: "$5",
-        description: "",
+        description: "Single brat served hot and ready.",
       },
       {
         name: "2 Brats",
         price: "$9",
-        description: "",
+        description: "Two brats for when one is not enough.",
       },
       {
         name: "Jumbo All Beef Hot Dog",
         price: "$6",
-        description: "",
+        description: "A classic all-beef hot dog.",
       },
       {
         name: "Vegan Dog",
         price: "$6",
-        description: "",
+        description: "Plant-based dog option.",
       },
       {
         name: "Corn Dog",
         price: "$4",
-        description: "",
+        description: "Classic corn dog.",
       },
     ],
   },
@@ -74,6 +74,7 @@ const menuSections = [
     id: "starters",
     label: "Starters & Snacks",
     icon: Coffee,
+    note: "* Seasonal items.",
     items: [
       {
         name: "House Nacho *GF",
@@ -110,17 +111,17 @@ const menuSections = [
       {
         name: "String Cheese",
         price: "$1",
-        description: "",
+        description: "Simple grab-and-go snack.",
       },
       {
         name: "Candy Bar",
         price: "$2",
-        description: "",
+        description: "Ask what candy bars are available.",
       },
       {
         name: "Nichols Inn Rotating Desserts",
         price: "$5",
-        description: "",
+        description: "Rotating dessert selection.",
       },
     ],
   },
@@ -130,11 +131,11 @@ const menuSections = [
     icon: Pizza,
     note: "Ask your bartender about current availability.",
     items: [
-      { name: "Abbey Style", price: "$16", description: "" },
-      { name: "Stadium Steak", price: "$14", description: "" },
-      { name: "Stadium Kicker", price: "$14", description: "" },
-      { name: "Cheese", price: "$12", description: "" },
-      { name: "Cheese (To Go)", price: "$10", description: "Available to go." },
+      { name: "Abbey Style", price: "$16", description: "Brew Pub Lotzza Motzza Abbey style pizza." },
+      { name: "Stadium Steak", price: "$14", description: "Brew Pub Lotzza Motzza Stadium Steak pizza." },
+      { name: "Stadium Kicker", price: "$14", description: "Brew Pub Lotzza Motzza Stadium Kicker pizza." },
+      { name: "Cheese", price: "$12", description: "Classic cheese pizza." },
+      { name: "Cheese To Go", price: "$10", description: "Cheese pizza available to go." },
     ],
   },
   {
